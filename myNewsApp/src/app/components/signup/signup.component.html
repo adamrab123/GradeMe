@@ -1,0 +1,19 @@
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:700,600' rel='stylesheet' type='text/css'>
+<form>
+  <div *ngIf="error">
+    {{ error }}
+  </div>
+  <div class="box">
+
+    <label class = "label" for="username">Username</label>
+    <input type="text" [(ngModel)]="user.username" name="username" class="email">
+
+    <label class = "label" for="password">Password</label>
+    <input type="password" [(ngModel)]="user.password" name="password"class="email">
+
+    <a (click)="signup()"><div id="btn2">Create account</div></a> <!-- End Btn2 -->
+
+
+  </div> <!-- End Box -->
+
+</form>
