@@ -1,23 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>My test page</title>
-    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
-    <link href="styles/style.css" rel="stylesheet" type="text/css">
   </head> 
   <h1 style="color:blue;">TEST</h1>
+  <meta charset="UTF-8">
+  <style type="text/css" media="screen">
+    #editor { 
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+</style>
   <style>
         body {background-color: powderblue;}
         h1   {color: royalblue;}
         p    {color: black;}
         </style>
   <body>
-    <!-- <p>Implement function ToLowerCase() that has a string parameter str, and returns the same string in lowercase.</p> -->
+    <!-- <pre id="editor">function foo(items) {
+        var i;
+        for (i = 0; i &lt; items.length; i++) {
+            alert("Ace Rocks " + items[i]);
+        }
+    }</pre> -->
+    <div id="editor">function foo(items) {
+            var x = "All this is syntax highlighted";
+            return x;
+        }</div>
     <h3>Question 1</h3>
     <label>Implement function ToLowerCase() that has a string parameter str, and returns the same string in lowercase.</label><br>
     <textarea name="message" rows="10" cols="120"></textarea>
+    <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        var editor = ace.edit("editor");
+        editor.setTheme("ace/theme/monokai");
+        editor.getSession().setMode("ace/mode/javascript");
+    </script>
+
 
     <input name="buttonExecute" onclick="execute(document.getElementsByName('textbox')[0].value)" type="button" value="Run" />
 
@@ -29,22 +50,6 @@
     <input name="buttonExecute" onclick="execute(document.getElementsByName('textbox')[0].value)" type="button" value="Run" />
     <p>Submit handwritten portion below</p>
     <input name="upload" onclick="execute(document.getElementsByName('textbox')[0].value)" type="button" value="Upload" />
-
     
-    
-    <!-- <h1>Mozilla is cool</h1>
-    <img src="images/firefox-icon.png" alt="The Firefox logo: a flaming fox surrounding the Earth.">
-
-    <p>At Mozilla, we’re a global community of</p>
-
-    <ul> <!-- changed to list in the tutorial -->
-      <!-- <li>technologists</li>
-      <li>thinkers</li>
-      <li>builders</li>
-    </ul>
-
-    <p>working together to keep the Internet alive and accessible, so people worldwide can be informed contributors and creators of the Web. We believe this act of human collaboration across an open platform is essential to individual growth and our collective future.</p>
-
-    <p>Read the <a href="https://www.mozilla.org/en-US/about/manifesto/">Mozilla Manifesto</a> to learn even more about the values and principles that guide the pursuit of our mission.</p> --> 
   </body>
 </html>
