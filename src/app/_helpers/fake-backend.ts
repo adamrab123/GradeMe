@@ -30,7 +30,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                         username: user.username,
                         firstName: user.firstName,
                         lastName: user.lastName,
-                        token: 'fake-jwt-token'
+                        token: 'fake-jwt-token',
+                        admin: user.admin
                     };
 
                     return of(new HttpResponse({ status: 200, body: body }));
@@ -72,7 +73,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             if (request.url.endsWith('/users/register') && request.method === 'POST') {
                 // get new user object from post body
                 let newUser = request.body;
-
                 // validation
                 let duplicateUser = users.filter(user => { return user.username === newUser.username; }).length;
                 if (duplicateUser) {
@@ -115,7 +115,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
             // pass through any requests not handled above
             return next.handle(request);
-            
+
         }))
 
         // call materialize and dematerialize to ensure delay even if an error is thrown (https://github.com/Reactive-Extensions/RxJS/issues/648)

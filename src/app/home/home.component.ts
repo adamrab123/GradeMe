@@ -18,14 +18,23 @@ export class HomeComponent implements OnInit {
     }
 
     deleteUser(id: number) {
-        this.userService.delete(id).pipe(first()).subscribe(() => { 
-            this.loadAllUsers() 
+        this.userService.delete(id).pipe(first()).subscribe(() => {
+            this.loadAllUsers()
         });
     }
 
+    runPython() {
+      console.log('run me');
+    }
+
     private loadAllUsers() {
-        this.userService.getAll().pipe(first()).subscribe(users => { 
-            this.users = users; 
+      let user = localStorage.getItem('currentUser');
+      let admin = JSON.parse(user).admin;
+      if(admin === true){
+        this.userService.getAll().pipe(first()).subscribe(users => {
+            this.users = users;
         });
+      }
+
     }
 }

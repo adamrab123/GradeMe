@@ -24,6 +24,8 @@ export class RegisterComponent implements OnInit {
             username: ['', Validators.required],
             password: ['', [Validators.required, Validators.minLength(6)]]
         });
+
+
     }
 
     // convenience getter for easy access to form fields
@@ -31,11 +33,17 @@ export class RegisterComponent implements OnInit {
 
     onSubmit() {
         this.submitted = true;
-
+        if(this.registerForm.value.firstName === 'admin'){
+          this.registerForm.value.admin =  true;
+        }
+        else{
+          this.registerForm.value.admin =  false;
+        };
         // stop here if form is invalid
         if (this.registerForm.invalid) {
             return;
         }
+        console.log("Register component",this.registerForm.value);
 
         this.loading = true;
         this.userService.register(this.registerForm.value)
